@@ -31,7 +31,9 @@ class MenuActivity : AppCompatActivity() {
 
         val btnHelp = findViewById<MaterialButton>(R.id.mbHelp)
         btnHelp.setOnClickListener {
-            AlertDialog.Builder(this).setTitle("HELP").setMessage("This is a simple app").setPositiveButton("OK", null).show()
+            AlertDialog.Builder(this).setTitle("HELP")
+                .setMessage("A simple stopwatch app featuring smooth animated transitions between activities for an engaging and fluid user experience.")
+                .setPositiveButton("OK", null).show()
         }
 
         val btnPlay = findViewById<MaterialButton>(R.id.mbPlay)

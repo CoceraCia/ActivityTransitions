@@ -1,5 +1,7 @@
 package com.coceracia.transitions.view
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -17,6 +19,8 @@ import com.google.android.material.button.MaterialButton
 class GameActivity : AppCompatActivity() {
     private var startTime = 0L
     private var running = false
+
+    private var actTime = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,7 +36,8 @@ class GameActivity : AppCompatActivity() {
             override fun run() {
                 if (running){
                     val elapsed = SystemClock.elapsedRealtime() - startTime
-                    timeTextView.text = formatTime(elapsed)
+                    actTime = formatTime(elapsed)
+                    timeTextView.text = actTime
                     handler.postDelayed(this, 16)
                 }
             }
@@ -44,12 +49,19 @@ class GameActivity : AppCompatActivity() {
                 running = true
                 startTime = SystemClock.elapsedRealtime()
                 handler.post(updateTime)
-                Toast.makeText(this, "PLAY", Toast.LENGTH_LONG).show()
                 btnPlayStop.text = "STOP"
             } else {
                 running = false
                 handler.removeCallbacks(updateTime)
-                Toast.makeText(this, "PLAY", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, ResultActivity::class.java)
+                val options = ActivityOptions.makeCustomAnimation(
+                    this,
+                    android.R.anim.fade_in,
+                    android.R.anim.fade_out
+                )
+                intent.putExtra("VALUE", actTime)
+                startActivity(intent, options.toBundle())
+                finish()
             }
         }
 
