@@ -99,11 +99,16 @@ app/
 - **IDE:** Android Studio  
 - **Platform:** Android  
 - **UI:** XML Layouts  
-- **Animations:** XML-based transitions  
+- **Animations:** XML-based transitions
+
+---
+
+## 📽️ Video Demo
+[![Demo Short](https://img.youtube.com/vi/6koti_EHpXg/maxresdefault.jpg)](https://youtube.com/shorts/6koti_EHpXg?si=kBWzt2sbOxtvPAH_)
 
 ---
 
 ## Author
 
-- **Miguel Cocera**
+- **Cocera Cia**
 - Academic project developed for Android navigation and transitions practice 🎓
